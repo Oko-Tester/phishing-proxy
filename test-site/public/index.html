@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#163e35" />
+    <meta
+      name="description"
+      content="Norda – dein ruhiger Ort für gute Zusammenarbeit. Eine lokale Demo mit funktionierendem Login."
+    />
+    <title>Norda — Dein Workspace</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <svg
+      class="icon-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="i-logo" viewBox="0 0 32 32">
+        <path d="M4 28V4h7l10 15V4h7v24h-7L11 13v15Z" fill="currentColor" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+        <circle cx="12" cy="12" r="3" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1" />
+        <rect x="14" y="3" width="7" height="7" rx="1" />
+        <rect x="3" y="14" width="7" height="7" rx="1" />
+        <rect x="14" y="14" width="7" height="7" rx="1" />
+      </symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24">
+        <path
+          d="M20 7v5h-5M4 17v-5h5M6.1 6a8 8 0 0 1 13 2M4.9 16a8 8 0 0 0 13 2"
+        />
+      </symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24">
+        <path d="M9 4H4v16h5m4-12 4 4-4 4m-5-4h12" />
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="11" rx="2" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" />
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M6 18 18 6" />
+      </symbol>
+    </svg>
+
+    <div id="login-view" class="login-layout">
+      <section class="login-side" aria-labelledby="login-heading">
+        <header class="login-header">
+          <a class="brand" href="/" aria-label="Norda Startseite"
+            ><svg><use href="#i-logo" /></svg>norda<span class="brand-dot"
+              >.</span
+            ></a
+          >
+          <span class="demo-label"><span></span> Demo-Workspace</span>
+        </header>
+
+        <main class="login-main">
+          <div class="login-form-wrap">
+            <span class="eyebrow">DEIN NÄCHSTER GUTER ARBEITSTAG</span>
+            <h1 id="login-heading">
+              Schön, dass du<br />wieder da bist<span class="heading-dot"
+                >.</span
+              >
+            </h1>
+            <p class="intro">Einloggen. Durchatmen. Gemeinsam weiterkommen.</p>
+
+            <form id="login-form" novalidate>
+              <div class="field">
+                <label for="email">E-Mail-Adresse</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="username"
+                  placeholder="du@unternehmen.de"
+                  required
+                  aria-describedby="form-error"
+                />
+              </div>
+              <div class="field">
+                <label for="password">Passwort</label>
+                <div class="password-field">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Dein Passwort"
+                    required
+                    aria-describedby="form-error"
+                  />
+                  <button
+                    id="toggle-password"
+                    class="icon-button password-toggle"
+                    type="button"
+                    aria-label="Passwort anzeigen"
+                    aria-pressed="false"
+                  >
+                    <svg class="icon"><use href="#i-eye" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-options">
+                <label class="checkbox-label"
+                  ><input id="remember" name="remember" type="checkbox" /><span
+                    >Angemeldet bleiben</span
+                  ></label
+                >
+                <button class="text-button" type="button" data-open-help>
+                  Zugang vergessen?
+                </button>
+              </div>
+              <p id="form-error" class="form-error" role="alert" hidden></p>
+              <button id="login-submit" class="primary-button" type="submit">
+                <span>Anmelden</span
+                ><svg class="icon"><use href="#i-arrow" /></svg>
+              </button>
+            </form>
+
+            <div class="demo-divider"><span>Erst einmal umsehen?</span></div>
+            <button id="fill-demo" class="secondary-button" type="button">
+              <svg class="icon"><use href="#i-grid" /></svg>Demo-Zugang
+              verwenden
+            </button>
+            <p class="demo-note">
+              Ein eigener Demo-Account. Keine Registrierung nötig.
+            </p>
+          </div>
+        </main>
+
+        <footer class="login-footer">
+          <span>© <span data-year>2026</span> Norda Studio</span
+          ><button class="text-button muted" data-open-help>
+            Hilfe &amp; Demo-Infos <span aria-hidden="true">↗</span>
+          </button>
+        </footer>
+      </section>
+
+      <aside class="story-side" aria-label="Norda Workspace">
+        <div class="story-top">
+          <span class="story-kicker">WENIGER REIBUNG. MEHR RAUM.</span
+          ><span class="edition">N° 01 / THE WORKSPACE</span>
+        </div>
+        <div class="story-content">
+          <div class="story-wordmark">
+            Make room<br />for good work<span>.</span>
+          </div>
+          <p>
+            Für klare Gedanken, gemeinsame Ideen<br />und alles, was als
+            Nächstes kommt.
+          </p>
+        </div>
+        <img
+          class="landscape"
+          src="/landscape.svg"
+          alt="Abstrakte Hügellandschaft in warmen Grün- und Sandtönen"
+          width="800"
+          height="660"
+        />
+        <div class="landscape-caption">
+          <span class="caption-line"></span>Eine neue Perspektive auf deinen
+          Arbeitstag.
+        </div>
+        <div class="story-bottom">
+          <div class="avatar-stack" aria-hidden="true">
+            <span>AW</span><span>LS</span><span>MK</span>
+          </div>
+          <p>Gute Arbeit beginnt<br /><strong>mit einem guten Ort.</strong></p>
+          <span class="story-spark" aria-hidden="true">✳</span>
+        </div>
+      </aside>
+    </div>
+
+    <div id="workspace-view" class="workspace" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Norda Übersicht"
+          ><svg><use href="#i-logo" /></svg>norda<span class="brand-dot"
+            >.</span
+          ></a
+        >
+        <div class="workspace-switch">
+          <span class="workspace-monogram">S</span
+          ><span
+            ><strong>Studio Workspace</strong><small>Demo-Umgebung</small></span
+          ><span class="switch-chevron" aria-hidden="true">⌄</span>
+        </div>
+        <span class="nav-label">WORKSPACE</span>
+        <nav aria-label="Hauptnavigation">
+          <a class="nav-item active" href="#overview" aria-current="page"
+            ><svg class="icon"><use href="#i-grid" /></svg>Übersicht<span
+              class="nav-dot"
+            ></span
+          ></a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="note-spark" aria-hidden="true">✳</span>
+          <h3>Raum für gute Arbeit.</h3>
+          <p>Deine Projekte. Dein Tempo.<br />Alles an einem Ort.</p>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="user-avatar" data-initials>AW</div>
+          <div class="user-details">
+            <strong data-user-name>Alex Winter</strong
+            ><small>Demo-Mitglied</small>
+          </div>
+          <button
+            id="logout"
+            class="icon-button"
+            aria-label="Abmelden"
+            title="Abmelden"
+          >
+            <svg class="icon"><use href="#i-logout" /></svg>
+          </button>
+        </div>
+      </aside>
+      <main class="workspace-main" id="overview">
+        <header class="workspace-header">
+          <span
+            >Workspace <span class="breadcrumb-separator">/</span>
+            <strong>Übersicht</strong></span
+          ><span class="demo-label"><span></span> Demo-Workspace</span>
+        </header>
+        <div class="workspace-content">
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow">DEIN WORKSPACE, AUF EINEN BLICK</span>
+              <h1>
+                Hallo, <span id="first-name">Alex</span
+                ><span class="heading-dot">.</span>
+              </h1>
+              <p>Schön, dass du da bist. Hier geht es für dich weiter.</p>
+            </div>
+            <button id="refresh" class="secondary-button compact">
+              <svg class="icon"><use href="#i-refresh" /></svg>Aktualisieren
+            </button>
+          </div>
+          <section class="workspace-banner" aria-label="Dein Fokus">
+            <div>
+              <span class="banner-kicker">PLATZ FÜR DAS WESENTLICHE</span>
+              <h2>Große Ideen.<br />Ein klarer nächster Schritt.</h2>
+              <p>Mach heute etwas, auf das du morgen stolz bist.</p>
+            </div>
+            <img src="/landscape.svg" alt="" width="800" height="660" />
+          </section>
+          <div class="stats-row">
+            <div>
+              <span>Projekte gesamt</span
+              ><strong id="total-projects">03<span>im Workspace</span></strong>
+            </div>
+            <div>
+              <span>In Arbeit</span
+              ><strong id="active-projects">02<span>in Bewegung</span></strong>
+            </div>
+            <div>
+              <span>Abgeschlossen</span
+              ><strong id="done-projects">01<span>gut gemacht</span></strong>
+            </div>
+          </div>
+          <section class="projects-section" aria-labelledby="projects-heading">
+            <div class="section-heading">
+              <div>
+                <h2 id="projects-heading">
+                  Deine Projekte <span id="project-count">3</span>
+                </h2>
+                <p>Alles, woran dein Team gerade arbeitet.</p>
+              </div>
+              <span class="table-caption">STUDIO / 2026</span>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Projekt</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Fortschritt</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Fällig am</th>
+                  </tr>
+                </thead>
+                <tbody id="project-rows"></tbody>
+              </table>
+            </div>
+          </section>
+          <footer class="workspace-footer">
+            <span
+              ><svg class="icon"><use href="#i-lock" /></svg>Du bist angemeldet
+              als <strong data-user-email>alex@norda.test</strong></span
+            ><span id="sync-status" role="status">Workspace geladen</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="help-dialog" aria-labelledby="help-heading">
+      <button
+        id="close-help"
+        class="icon-button dialog-close"
+        aria-label="Schließen"
+      >
+        <svg class="icon"><use href="#i-close" /></svg></button
+      ><span class="eyebrow">WILLKOMMEN BEI NORDA</span>
+      <h2 id="help-heading">Einfach ausprobieren.</h2>
+      <p>
+        Dies ist eine eigenständige Testwebsite mit einer fiktiven Marke. Mit
+        diesem Demo-Zugang kannst du dich anmelden:
+      </p>
+      <dl class="credentials">
+        <div>
+          <dt>E-Mail</dt>
+          <dd>alex@norda.test</dd>
+        </div>
+        <div>
+          <dt>Passwort</dt>
+          <dd>Norda-Demo!2026</dd>
+        </div>
+      </dl>
+      <p class="help-note">
+        Nutze ausschließlich diese Demo-Daten. Sitzungen werden lokal im
+        Arbeitsspeicher gehalten und beim Serverneustart gelöscht.
+      </p>
+      <button id="help-fill-demo" class="primary-button">
+        Demo-Zugang übernehmen<svg class="icon"><use href="#i-arrow" /></svg>
+      </button>
+    </dialog>
+    <div id="toast" class="toast" role="status" hidden>
+      <svg class="icon"><use href="#i-check" /></svg><span></span>
+    </div>
+  </body>
+</html>
